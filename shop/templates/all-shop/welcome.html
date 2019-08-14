@@ -1,4 +1,20 @@
 {%extends 'all-shop/base.html'%}
-
-
-<h1> Welcome to the Moringa Tribune</h1>
+{% load bootstrap3 %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+            {% for item in products %}  
+        <div style=" padding:20px;"class="col-md-4">
+                <div class="card" style="padding:20px;width: 18reme">
+                    <a href="/products/{{item.id}}"><img style="height: 250px;width: 250px" src="{{item.product_image.url}}" alt=" image "></a>
+                        <div class="card-body">
+                          <h5 class="card-title">{{item.price}}</h5>
+                        
+                        </div>
+                    </div>
+    </div>
+{% endfor %}
+</div>
+</div>
+{% endblock %}
