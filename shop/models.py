@@ -1,11 +1,12 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 
 class Product(models.Model):
     product_name = models.CharField(max_length=20)
     product_image = models.ImageField(upload_to = 'image/')
     price = models.IntegerField()
+    description = models.TextField(null=True)
 
     def __str__(self):
         return self.product_name
@@ -44,3 +45,11 @@ class Image(models.Model):
     def get_image(cls):
         image = Image.objects.get(id=id)
         return image  
+
+class Cart(models.Model):
+    products = models.ForeignKey(Product, null=True)
+    user = models.ForeignKey(User, null=True)
+     
+    
+
+    
